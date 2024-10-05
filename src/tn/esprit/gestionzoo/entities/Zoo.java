@@ -1,21 +1,55 @@
+package tn.esprit.gestionzoo.entities;
+
 import java.util.Arrays;
 
 public class Zoo {
-    Animal[] animals;
-    String name;
-    String city;
+    private Animal[] animals;
+    private String name;
+    private String city;
     //int  nbrCages;
-    final int  nbrCages = 25;
+    private final int  nbrCages = 25;
+
+    public Animal[] getAnimals() {
+        return animals;
+    }
+
+    public void setAnimals(Animal[] animals) {
+        this.animals = animals;
+    }
+
+    public String getCity() {
+        return city;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public int getNbrCages() {
+        return nbrCages;
+    }
+
+    public void setName(String name) {
+        if (name == null || name.trim().isEmpty()) {
+            System.out.println("Le nom ne peut pas être vide ");
+        }
+
+        this.name = name;
+    }
+
+    public void setCity(String city) {
+        this.city = city;
+    }
 
     public Zoo(String name, String city){
-        this.name = name;
+        setName(name);
         this.city = city;
         //this.nbrCages = nbrCages;
-        this.animals = new Animal[25];
+        this.animals = new Animal[nbrCages];
     }
 
     public void displayZoo(){
-        /*System.out.println( "Zoo= \n"+" name='" + name + '\'' +
+        /*System.out.println( "tn.esprit.gestionzoo.entities.Zoo= \n"+" name='" + name + '\'' +
                 ", city='" + city + '\'' +
                 ", nbrCages=" + nbrCages );*/
 
@@ -29,7 +63,7 @@ public class Zoo {
 
     @Override
     public String toString() {
-        return "Zoo{" +
+        return "tn.esprit.gestionzoo.entities.Zoo{" +
                 "animals=" + Arrays.toString(animals) +
                 ", name='" + name + '\'' +
                 ", city='" + city + '\'' +
@@ -39,8 +73,8 @@ public class Zoo {
 
 
     /* Prosit 3  -- Instruction 10 --  */
-    public Boolean addAnimal(Animal animal) {
-        for (Animal existingAnimal : animals) {
+    /*public Boolean addAnimal(tn.esprit.gestionzoo.entities.Animal animal) {
+        for (tn.esprit.gestionzoo.entities.Animal existingAnimal : animals) {
             if (existingAnimal != null && existingAnimal.name.equals(animal.name)) {
                 System.out.println("L'animal " + animal.name + " existe déjà dans le zoo.");
                 return false;
@@ -54,13 +88,47 @@ public class Zoo {
         }
         System.out.println("Le zoo est plein.");
         return false;
+    }*/
+
+
+    /* Prosit 4 -- Instruction 17 --  */
+    public Boolean addAnimal(Animal animal) {
+
+        if (animal == null) {
+            System.out.println("L'animal ne peut pas être null.");
+            return false;
+        }
+
+        // Vérification si l'animal existe déjà dans le zoo
+        for (Animal existingAnimal : animals) {
+            if (existingAnimal != null && existingAnimal.getName().equals(animal.getName())) {
+                System.out.println("L'animal " + animal.getName() + " existe déjà dans le zoo.");
+                return false;
+            }
+        }
+
+
+        if (isZooFull()) {
+            System.out.println("Le zoo est plein.");
+            return false;
+        }
+
+        for (int i = 0; i < animals.length; i++) {
+            if (animals[i] == null) {
+                animals[i] = animal;
+                System.out.println("L'animal " + animal.getName() + " a été ajouté avec succès.");
+                return true;
+            }
+        }
+
+        return false;
     }
 
 
     public int searchAnimal(Animal animal) {
         if (animal != null) {
             for (int i = 0; i < animals.length; i++) {
-                if (animals[i] != null && animals[i].name.equals(animal.name)) {
+                if (animals[i] != null && animals[i].getName().equals(animal.getName())) {
                     return i;
                 }
             }
@@ -76,7 +144,7 @@ public class Zoo {
         }
 
         for (int i = 0; i < animals.length; i++) {
-            if (animals[i] != null && animals[i].name.equals(animal.name)) {
+            if (animals[i] != null && animals[i].getName().equals(animal.getName())) {
                 animals[i] = null;
                 return true;
             }

@@ -1,3 +1,8 @@
+package tn.esprit.gestionzoo.main;
+
+import tn.esprit.gestionzoo.entities.Animal;
+import tn.esprit.gestionzoo.entities.Zoo;
+
 import java.util.Scanner;
 
 public class ZooManagement {
@@ -19,10 +24,10 @@ public class ZooManagement {
 
 
         Animal lion = new Animal();
-        lion.family = "liono";
-        lion.age = 5;
-        lion.isMammal = false;
-        lion.name = "Un lion X";
+        lion.setFamily("liono");
+        lion.setAge(5);
+        lion.setMammal(false);
+        lion.setName("Un lion X");
 
         Zoo myZoo = new Zoo("Safari Park", "Tunis");
 
@@ -84,7 +89,7 @@ public class ZooManagement {
 
         Zoo ZooPlusRempli=Zoo.comparerZoo(myZoo,myZoo1);
         if (ZooPlusRempli != null) {
-            System.out.println(" \n \n Le zoo avec le plus d'animaux est : " + ZooPlusRempli.name);
+            System.out.println(" \n \n Le zoo avec le plus d'animaux est : " + ZooPlusRempli.getName());
         } else {
             System.out.println("Les deux zoos ont le même nombre d'animaux.");
         }
