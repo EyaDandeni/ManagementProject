@@ -1,7 +1,6 @@
 package tn.esprit.gestionzoo.main;
 
-import tn.esprit.gestionzoo.entities.Animal;
-import tn.esprit.gestionzoo.entities.Zoo;
+import tn.esprit.gestionzoo.entities.*;
 
 import java.util.Scanner;
 
@@ -93,6 +92,21 @@ public class ZooManagement {
         } else {
             System.out.println("Les deux zoos ont le même nombre d'animaux.");
         }
+
+        /* Prosit 5 --- Instruction 23 ---  */
+        Dolphin dolphin = new Dolphin("Cetacea", "Dolphi", 10, false, "Ocean", 15.0f);
+        System.out.println(dolphin.toString());
+        Penguin penguin = new Penguin("Spheniscidae", "Pingu", 5, false, "Antarctica", 100.0f);
+        System.out.println(penguin.toString());
+
+        /* --- Prosit 5 - Instruction 24 --- */
+        Aquatic aquatic=new Aquatic("fam","name",10,true,"Ocean");
+        aquatic.swin();
+        // => La méthode s'affiche correctement
+        dolphin.swin();
+        // => La méthode a été redéfinie dans la classe Dolphin donc elle affiche un message spécifcique.
+        penguin.swin();
+        // => La méthode affiche le meme message que dans Aquatic car n'est pas redéfinie dans Penguin
 
     }
 }

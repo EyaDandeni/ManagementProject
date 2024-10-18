@@ -7,7 +7,6 @@ public class Animal {
     private int age;
     private boolean isMammal;
 
-
     /* Prosit 4 -- Instruction 18 -- */
 
     public int getAge() {
@@ -57,7 +56,7 @@ public class Animal {
 
     @Override
     public String toString() {
-        return "tn.esprit.gestionzoo.entities.Animal{" +
+        return "Animal{" +
                 "family='" + family + '\'' +
                 ", name='" + name + '\'' +
                 ", age=" + age +

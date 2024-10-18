@@ -2,7 +2,7 @@ package tn.esprit.gestionzoo.entities;
 
 import java.util.Arrays;
 
-public class Zoo {
+public class Zoo extends Animal{
     private Animal[] animals;
     private String name;
     private String city;
@@ -193,4 +193,7 @@ public class Zoo {
         }
 
     }
+
+
+
 }
