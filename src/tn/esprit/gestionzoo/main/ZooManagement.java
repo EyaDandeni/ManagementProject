@@ -108,5 +108,32 @@ public class ZooManagement {
         penguin.swin();
         // => La méthode affiche le meme message que dans Aquatic car n'est pas redéfinie dans Penguin
 
+
+        /* Prosit 6 - Instruction 26 */
+        Zoo zooAqua =new Zoo("zooAqua","Tunis");
+        zooAqua.addAquaticAnimal(dolphin);
+        zooAqua.addAquaticAnimal(penguin);
+
+        System.out.println("Voici les animaux du ZooAqua \n");
+        zooAqua.displayZoo();
+
+
+        // Test du méthode maxPenguinSwimmingDepth //
+        Penguin penguin1 = new Penguin("Spheniscidae",
+                "Pingu", 5, false,
+                "Antarctica", 25.0f);
+
+        Penguin penguin2 = new Penguin("Spheniscidae",
+                "Pingu", 5, false,
+                "Antarctica", 300.0f);
+
+        zooAqua.addAquaticAnimal(penguin1);
+        zooAqua.addAquaticAnimal(penguin2);
+        float maxDepth = zooAqua.maxPenguinSwimmingDepth();
+        System.out.println("La profondeur de nage maximale des pingouins dans le zoo est : " + maxDepth + " mètres");
+
+        // ------------ //
+        // Prosit 6 - Instruction 30
+        zooAqua.displayNumberOfAquaticsByType();
     }
 }

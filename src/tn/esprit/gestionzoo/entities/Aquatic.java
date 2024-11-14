@@ -2,7 +2,6 @@ package tn.esprit.gestionzoo.entities;
 
 public class Aquatic extends Animal{
     private String habitat;
-
     public String getHabitat() {
         return habitat;
     }
@@ -28,6 +27,24 @@ public class Aquatic extends Animal{
     }
 
     public void swin(){
-        System.out.println("This aquatic animal is swimming");
+         System.out.println("This aquatic animal is swimming");
+     }
+
+
+     // Prosit 6 --- Instruction 31 //
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+
+        if (obj == null ) {
+            return false;
+        }
+
+        Aquatic aquatic = (Aquatic) obj;
+        return this.getName().equals(aquatic.getName()) &&
+                this.getAge() == aquatic.getAge() &&
+                this.getHabitat().equals(aquatic.getHabitat());
     }
 }

@@ -7,7 +7,6 @@ public class Dolphin extends Aquatic{
     public float getSwimmingSpeed() {
         return swimmingSpeed;
     }
-
     public void setSwimmingSpeed(float swimmingSpeed) {
         this.swimmingSpeed = swimmingSpeed;
     }
