@@ -1,5 +1,8 @@
 package tn.esprit.gestionzoo.entities;
 
+import tn.esprit.gestionzoo.Exceptions.InvalidAgeException;
+import tn.esprit.gestionzoo.Exceptions.ZooFullException;
+
 import java.util.Arrays;
 
 public class Zoo extends Animal{
@@ -94,38 +97,38 @@ public class Zoo extends Animal{
     }*/
 
 
-    /* Prosit 4 -- Instruction 17 --  */
-    public Boolean addAnimal(Animal animal) {
+    public void addAnimal(Animal animal) throws ZooFullException, InvalidAgeException {
 
         if (animal == null) {
-            System.out.println("L'animal ne peut pas être null.");
-            return false;
+            throw new IllegalArgumentException("L'animal ne peut pas être null.");
+        }
+        if (animal.getAge() < 0) {
+            throw new InvalidAgeException("L'âge de l'animal ne peut pas être négatif.");
         }
 
-        // Vérification si l'animal existe déjà dans le zoo
         for (Animal existingAnimal : animals) {
             if (existingAnimal != null && existingAnimal.getName().equals(animal.getName())) {
                 System.out.println("L'animal " + animal.getName() + " existe déjà dans le zoo.");
-                return false;
+                return;
             }
         }
 
-
-        if (isZooFull()) {
-            System.out.println("Le zoo est plein.");
-            return false;
-        }
-
+        // Ajouter l'animal dans le zoo
+        boolean added = false;
         for (int i = 0; i < animals.length; i++) {
             if (animals[i] == null) {
                 animals[i] = animal;
                 System.out.println("L'animal " + animal.getName() + " a été ajouté avec succès.");
-                return true;
+                added = true;
+                break;
             }
         }
 
-        return false;
+        if (!added) {
+            throw new ZooFullException("Le zoo est plein.");
+        }
     }
+
 
 
     public int searchAnimal(Animal animal) {
